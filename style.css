@@ -1,5 +1,19 @@
+html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
 #mainContainer{
     display: flex;
     flex-direction: column;
     flex: 1 1 0;
+}
+
+.cells:hover{
+    background-color: lightgreen;
+    
 }

@@ -1,14 +1,20 @@
+let noSquares = Number(prompt ("How many sqaures do you want per side?"));
+
+noSquares= noSquares<=100? noSquares: 100 // limiting noSquares to 100
+console.log(noSquares)
 mainContainer = document.querySelector('#mainContainer');
 let cellNumber = 1; // Counter to label each small cell
 
 // Outer loop for creating rows in the grid
-for (let i = 0; i <= 15; i++) {
+for (let i = 0; i < noSquares; i++) {
     let rowDiv = document.createElement('div'); // New row container
     
     // Inner loop for creating columns in each row
-    for (let j = 0; j <= 15; j++) {
+    for (let j = 0; j < noSquares; j++) {
         let cellDiv = document.createElement("div"); // Individual cell
-        
+        cellDiv.setAttribute('data-num', cellNumber);
+        cellDiv.setAttribute('class', 'cells');
+
         // Style the cell
         cellDiv.style.cssText = `
         border: 0.5px solid red;
@@ -27,3 +33,14 @@ for (let i = 0; i <= 15; i++) {
         `;
     mainContainer.appendChild(rowDiv);
 }
+
+let cells = document.querySelectorAll('.cells');
+
+cells.forEach(cell =>{
+    cell.addEventListener('click',(e)=>{
+        e.target.style.backgroundColor= 'lightsalmon'
+    });
+});
+
+
+
