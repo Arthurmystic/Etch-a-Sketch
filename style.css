@@ -16,10 +16,11 @@ html {
 #mainContainer{
     display: flex;
     flex-direction: column;
+    justify-self: center;
     flex: 1 1 0;
 }
 
-.cells:hover{
+/* .cells:hover{
     background-color: lightgreen;
     
-}
+} */

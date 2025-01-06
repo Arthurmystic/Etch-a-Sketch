@@ -4,9 +4,9 @@ let resetGridButton = document.querySelector('#resetGrid')
 function resetGrid() {
     let noSquares = Number(prompt("How many sqaures do you want per side?"));
     noSquares = noSquares <= 100 ? noSquares : 100; // limiting noSquares to 100
-    gridMaker (noSquares)
+    gridMaker (noSquares);
 }
-
+// let cells;
 function gridMaker (noSquares) {
     mainContainer = document.querySelector('#mainContainer');
     mainContainer.textContent = ''
@@ -24,11 +24,12 @@ function gridMaker (noSquares) {
 
             // Style the cell
             cellDiv.style.cssText = `
-        border: 0.5px solid red;
-        width: 50px;
-        height: 50px;
-        flex: 1 1 0;
-        `;
+                font-size: 8px;
+                border: 0.5px solid red;
+                width: 3em;
+                height: 3em;
+                flex: 1 1 0px;
+                `;
             cellDiv.textContent = `${cellNumber}`; // Cell number
             rowDiv.appendChild(cellDiv);
             cellNumber++;
@@ -36,20 +37,26 @@ function gridMaker (noSquares) {
         // Style the row container
         rowDiv.style.cssText = `
         display: flex;
-        flex: 1 1 0;
+        flex: 1 1 0px;
         `;
-        mainContainer.appendChild(rowDiv);
+        mainContainer.appendChild(rowDiv); 
     }
-}
-
-let cells = document.querySelectorAll('.cells');
-
-cells.forEach(cell => {
-    cell.addEventListener('click', (e) => {
-        e.target.style.backgroundColor = 'lightsalmon'
+    let cells = document.querySelectorAll('.cells');
+    cells.forEach(cell => {
+        cell.addEventListener('mouseover', (e)=>{
+            e.target.style.backgroundColor = `rgb(${Random(255)},${Random(255)},${Random(255)})`;
+        });
+        cell.addEventListener('mouseout', (e)=>{
+            e.target.style.backgroundColor = `rgb(${Random(255)},${Random(255)},${Random(255)})`;
+        });
+        cell.addEventListener('click', (e) => {
+            e.target.style.backgroundColor = 'black';
+        });
     });
-});
-
+}
+function Random(num){
+    return (Math.floor(Math.random()*num)+1);
+}
 resetGridButton.addEventListener('click',resetGrid)
 
 
