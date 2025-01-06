@@ -7,6 +7,12 @@ html {
     box-sizing: inherit;
   }
 
+  #resetGrid{
+    display: flex;
+    justify-self: center;
+    text-align: center;
+  }
+
 #mainContainer{
     display: flex;
     flex-direction: column;
